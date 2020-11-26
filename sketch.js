@@ -11,7 +11,10 @@ var ball_1, ball_2, ball_3, ball_4, ball_5;
 var block;
 
 var rope_1, rope_2, rope_3, rope_4, rope_5;
-
+var image;
+function preload(){
+	image = loadImage("background.jpg")
+}
 function setup() {
 	createCanvas(800, 600);
 
@@ -38,18 +41,18 @@ function setup() {
 
 
 function draw() {
-  rectMode(CENTER);
-  background(220);
+	background(image)
+	Engine.update(engine)
+  	rectMode(CENTER);
+  
 
-  textSize(25);
-  text(mouseX + "," + mouseY , 200,200)
   ball_1.display();
   ball_2.display();
   ball_3.display();
   ball_4.display();
   ball_5.display();
  
-  block.display();
+//   block.display();
   
   rope_1.display();
   rope_2.display();
@@ -63,5 +66,10 @@ function keyPressed(){
 	if(keyCode === UP_ARROW){
 	Matter.Body.applyForce(ball_1.body, ball_1.body.position,{x: -50 , y: -45});
 	}
+}
+
+function mouseDragged(){
+	Matter.Body.applyForce(ball_1.body, ball_1.body.position,{x: -5 , y: -5})
+	Matter.Body.setPosition(ball_1.body, {x: mouseX , y: mouseY})
 }
 

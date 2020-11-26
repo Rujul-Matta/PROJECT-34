@@ -17,6 +17,8 @@ class Chain {
     display(){
     var pos = this.chain.bodyA.position;
     var pos1 = this.chain.bodyB.position;
+    stroke(218,186,96)
+    strokeWeight(5)
     line(pos.x, pos.y,pos1.x+this.offsetX, pos1.y + this.offsetY);
     }
 }
